@@ -1,18 +1,72 @@
 name: Continuous integration
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   
 
 jobs:
-
   apk:
     name: Build APK
     runs-on: ubuntu-20.04
 
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v2
         with:
           submodules: 'recursive'
+
+      # Setup Java environment (Java 11 for Android)
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt' # or 'zulu', etc.
+          java-version: '11'
+
+      # Cache Gradle dependencies
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}
+
+      # Set up Android SDK
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          api-level: 30
+          build-tools: 30.0.3
+          ndk: 21.1.6352462 # if NDK is needed
+          cache: true
+
+      # Make gradlew executable
       - name: Make gradlew executable
         run: chmod +x ./gradlew
+
+      # Build the Debug APK
       - name: Build debug APK
         run: ./gradlew assembleDebug
+
+      # Run Lint checks (optional)
+      - name: Run Lint checks
+        run: ./gradlew lint
+
+      # Upload APK as build artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+
+      # Optional: Upload Lint reports (if lint step is added)
+      - name: Upload Lint Report
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results.html
