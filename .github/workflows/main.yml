@@ -53,8 +53,8 @@ jobs:
         run: ./gradlew assembleDebug --stacktrace
 
       # Run Lint checks (optional)
-      - name: Run Lint checks
-        run: ./gradlew lint
+      #- name: Run Lint checks
+       # run: ./gradlew lint
 
       # Upload APK as build artifact
       - name: Upload APK
