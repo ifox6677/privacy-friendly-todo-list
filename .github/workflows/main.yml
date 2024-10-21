@@ -50,7 +50,7 @@ jobs:
 
       # Build the Debug APK
       - name: Build debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --stacktrace
 
       # Run Lint checks (optional)
       - name: Run Lint checks
