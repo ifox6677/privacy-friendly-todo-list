@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:   
+  workflow_dispatch:
 
 jobs:
   apk:
@@ -13,20 +13,20 @@ jobs:
 
     steps:
       # Checkout the repository
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
 
       # Setup Java environment (Java 11 for Android)
       - name: Set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: 'adopt' # or 'zulu', etc.
           java-version: '11'
 
       # Cache Gradle dependencies
       - name: Cache Gradle dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -58,7 +58,7 @@ jobs:
 
       # Upload APK as build artifact
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
@@ -66,7 +66,7 @@ jobs:
       # Optional: Upload Lint reports (if lint step is added)
       - name: Upload Lint Report
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: lint-report
           path: app/build/reports/lint-results.html
