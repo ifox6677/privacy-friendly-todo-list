@@ -32,7 +32,7 @@
     <!-- 通用模型字符串 -->
     <string name="select_option">选择选项</string>
     <string name="high_priority">高优先级</string>
-    <string name="mediu                        m_priority">中优先级</string>
+    <string name="medium_priority">中优先级</string>
     <string name="low_priority">低优先级</string>
     <string name="yes">是</string>
     <string name="no">否</string>
