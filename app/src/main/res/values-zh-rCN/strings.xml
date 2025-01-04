@@ -205,7 +205,6 @@
    <!-- 提醒服务 -->
 <string name="deadline_approaching">截止日期临近：%1$s</string>
 <string name="recurring_deadline_approaching">截止日期临近：%1$s（第 %2$d 次重复）</string>
-<string name="alarm_set_for_task">%1$s（将在 %2$s 内）：%3$s</string>
 
 <!-- 通知 -->
 <string name="notif_reminder_ch_name">任务提醒</string>
