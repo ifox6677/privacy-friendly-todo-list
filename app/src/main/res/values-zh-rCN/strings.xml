@@ -114,7 +114,6 @@
 <string name="delete_task">删除任务</string>
 <string name="task_removed">任务已移入回收站</string>
 <string name="deadline">截止日期</string>
-<string name="recurrence_pattern">重复模式</string>
 <string name="select_recurrence_pattern">选择一个重复模式：</string>
 <string name="reminder">提醒</string>
 <string name="deadline_smaller_reminder">截止日期不能早于提醒时间。</string>
