@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2021-2024  Christopher Beckmann
+Copyright (C) 2021-2025  Christopher Beckmann
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -102,7 +102,6 @@ class BackupRestorer : IBackupRestorer {
                 ?: throw RuntimeException("Unknown preference $name")
             when (prefMetaData.dataType) {
                 PrefDataType.BOOLEAN -> pref.putBoolean(name, reader.nextBoolean())
-                PrefDataType.LONG -> pref.putLong(name, reader.nextLong())
                 PrefDataType.STRING -> pref.putString(name, reader.nextString())
             }
         }

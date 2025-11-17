@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2018-2024  Sebastian Lutz
+Copyright (C) 2018-2025  Sebastian Lutz
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,10 +25,12 @@ import android.widget.RemoteViewsService
  * Created by Sebastian Lutz on 15.02.2018.
  *
  * Service that gives data to AppWidgetProvider (TodoListWidget) class
+ *
+ * This class is only in use if SDK_INT is below Build.VERSION_CODES.S. See [TodoListWidget].
  */
 class TodoListWidgetViewsService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
         val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,AppWidgetManager.INVALID_APPWIDGET_ID)
-        return TodoListWidgetViewsFactory(applicationContext, appWidgetId)
+        return TodoListWidgetViewsFactoryLegacy(applicationContext, appWidgetId)
     }
 }

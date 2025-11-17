@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2024  Christian Adams
+Copyright (C) 2024-2025  Christian Adams
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,11 +36,13 @@ class AlarmReceiver : BroadcastReceiver() {
         val extras = intent.extras
         if (null != extras && extras.containsKey(AlarmMgr.KEY_ALARM_ID)) {
             val alarmId = extras.getInt(AlarmMgr.KEY_ALARM_ID)
-            Log.i(TAG, "Received intent with action $action and alarm ID $alarmId. Starting reminder service.")
+            Log.i(TAG, "Received intent with action $action and alarm ID $alarmId. Starting handle-alarm-job and update-alarm-job.")
             JobManager.startHandleAlarmJob(context, alarmId)
         } else {
-            Log.e(TAG, "Received alarm without alarm ID.")
+            Log.e(TAG, "Received alarm without alarm ID. Only starting update-alarm-job.")
         }
+
+        JobManager.startUpdateAlarmJob(context)
     }
 
     companion object {

@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2024  Christian Adams
+Copyright (C) 2024-2025  Christian Adams
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import org.secuso.privacyfriendlytodolist.model.TodoTask.Priority
 import org.secuso.privacyfriendlytodolist.model.TodoTask.RecurrencePattern
+import org.secuso.privacyfriendlytodolist.model.TodoTask.ReminderState
 import org.secuso.privacyfriendlytodolist.util.Helper
 
 @Entity(
@@ -55,6 +56,7 @@ data class TodoTaskData(
     var recurrencePattern: RecurrencePattern = RecurrencePattern.NONE,
     var recurrenceInterval: Int = 1,
     var reminderTime: Long? = null,
+    var reminderState: ReminderState = ReminderState.INITIAL,
     var progress: Int = 0,
     var creationTime: Long = Helper.getCurrentTimestamp(),
     var doneTime: Long? = null,

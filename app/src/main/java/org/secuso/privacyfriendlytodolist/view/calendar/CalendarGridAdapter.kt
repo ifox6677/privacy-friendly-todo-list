@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2018-2024  Sebastian Lutz
+Copyright (C) 2018-2025  Sebastian Lutz
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -160,8 +160,7 @@ class CalendarGridAdapter(context: Context, resource: Int) :
             if (todoTask.isRecurring()) {
                 val recurringDateCal = Calendar.getInstance()
                 recurringDateCal.setTimeInMillis(TimeUnit.SECONDS.toMillis(deadline))
-                Helper.getNextRecurringDate(recurringDateCal, todoTask.getRecurrencePattern(),
-                    todoTask.getRecurrenceInterval(), startCal)
+                Helper.getNextRecurringDateAndCount(recurringDateCal, todoTask, startCal)
                 while (recurringDateCal < endCal) {
                     deadline = TimeUnit.MILLISECONDS.toSeconds(recurringDateCal.timeInMillis)
                     addTaskOfDay(todoTask, deadline)

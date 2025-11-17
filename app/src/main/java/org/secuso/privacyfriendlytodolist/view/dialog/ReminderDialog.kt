@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2016-2024  Simon Breitfelder
+Copyright (C) 2016-2025  Simon Breitfelder
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -71,6 +71,7 @@ class ReminderDialog(context: Context, private val reminderTime: Long?, private 
             layoutDate.visibility = View.GONE
             layoutTime.visibility = View.VISIBLE
         }
+        datePicker.firstDayOfWeek = PreferenceMgr.getFirstDayOfWeek(context)
         val timePicker: TimePicker = findViewById(R.id.tp_reminder)
         timePicker.setIs24HourView(DateFormat.is24HourFormat(context))
         timePicker.currentHour = calendar[Calendar.HOUR_OF_DAY]

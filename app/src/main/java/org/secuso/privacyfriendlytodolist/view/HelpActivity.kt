@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2018-2024  Sebastian Lutz
+Copyright (C) 2018-2025  Sebastian Lutz
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ class HelpActivity : AppCompatActivity() {
         if (supportActionBarCopy != null) {
             supportActionBarCopy.setDisplayHomeAsUpEnabled(true)
             supportActionBarCopy.setDisplayShowHomeEnabled(true)
-            supportActionBarCopy.setHomeAsUpIndicator(R.drawable.arrow)
+            supportActionBarCopy.setHomeAsUpIndicator(R.drawable.ic_arrow_left_white_24dp)
         }
     }
 

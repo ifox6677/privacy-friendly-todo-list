@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2024  Christian Adams
+Copyright (C) 2024-2025  Christian Adams
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ class PermissionStateReceiver : BroadcastReceiver() {
             return
         }
 
-        Log.i(TAG, "Received intent with action $action. Reloading alarms.")
+        Log.i(TAG, "Received intent with action $action. Starting update-alarm-job.")
         JobManager.startUpdateAlarmJob(context)
     }
 

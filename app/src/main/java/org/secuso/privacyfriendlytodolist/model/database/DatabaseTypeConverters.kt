@@ -1,6 +1,6 @@
 /*
 Privacy Friendly To-Do List
-Copyright (C) 2024  Christian Adams
+Copyright (C) 2024-2025  Christian Adams
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ package org.secuso.privacyfriendlytodolist.model.database
 import androidx.room.TypeConverter
 import org.secuso.privacyfriendlytodolist.model.TodoTask.Priority
 import org.secuso.privacyfriendlytodolist.model.TodoTask.RecurrencePattern
+import org.secuso.privacyfriendlytodolist.model.TodoTask.ReminderState
 
 object DatabaseTypeConverters {
     @TypeConverter
@@ -44,5 +45,17 @@ object DatabaseTypeConverters {
     @JvmStatic
     fun toPriority(ordinal: Int?): Priority? {
         return if (null != ordinal) Priority.fromOrdinal(ordinal) else null
+    }
+
+    @TypeConverter
+    @JvmStatic
+    fun fromReminderState(reminderState: ReminderState?): Int? {
+        return reminderState?.ordinal
+    }
+
+    @TypeConverter
+    @JvmStatic
+    fun toReminderState(ordinal: Int?): ReminderState? {
+        return if (null != ordinal) ReminderState.fromOrdinal(ordinal) else null
     }
 }
